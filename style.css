@@ -1,0 +1,485 @@
+.w{
+    width: 1200px;
+    margin: auto;
+}
+/* <!-- 快捷导航 --> */
+.shortcut{
+    height: 50px;
+    background-color:black;
+    color: white;
+}
+
+.shortcut ul{
+    display: flex;
+    height: 50px;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items:center ;
+}
+
+.shortcut li:first-child{
+    color: aqua;
+}
+
+.shortcut li a{
+    display: block;
+    transition: color .3s;
+}
+
+.shortcut li a:hover{
+   color: aqua;
+   border-bottom:  2px aqua solid;
+}
+ 
+/* 用盒子作为竖线效果 */
+.shortcut li .line{
+    width: 1px;
+    height: 12px;
+    background-color: aqua;
+}
+
+
+/* <!-- header区域 --> */
+.header{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0px;
+    height: 100px;
+    background-color: rgba(223, 85, 136, 0.8);
+}
+
+.header .w{
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+}
+
+.header .logo{
+    height: 100px;
+    width: 179px;
+}
+
+.header .logo h1{
+    height: 100%;
+    width: 100%;
+}
+
+.header .logo a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url(./image/logo.png) center/cover;
+    text-indent: -999px;
+    overflow: hidden ;
+}
+
+.header .nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    gap: 30px;
+}
+
+.header .nav ul a{
+    /* display: block;   导航栏有抖动而这里没有，是因为这里a是行内元素*/
+    /* shortcut 里的 a 标签因为是 block，它的边框是“实体”；而 header 里的 a 标签因为是行内元素，它的边框更像是“投影”，不占物理空间 */
+    color: white;
+    transition: color .3s;
+}
+
+.header .nav ul li:first-child a{
+    color: rgb(89, 162, 222);
+   
+}
+
+.header .nav ul a:hover{
+    color: rgb(89, 162, 222);
+    border-bottom: solid rgb(107, 177, 234) 2px;
+}
+
+.header .search{
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.header .search input{
+    height: 30px;
+    padding-left: 15px;
+    border: 2px solid rgba(223, 85, 136, 0.8);
+    border-radius: 15px;
+}
+
+.header .search input::placeholder{
+    color: rgba(223, 85, 136, 0.8);
+}
+
+/* 轮播图 */
+/* 这个是视窗 */
+.carousel{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.carousel input[type=radio]{
+    display: none;
+}
+
+/* 长图加平移实现轮播效果 */
+.all-slides{
+    display: flex;
+    height: 100%;
+    width: 300%;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); 
+
+}
+
+div[class^=slide]{
+    /* 轮播图 */
+    position: relative;
+    height: 100%;
+    width: 33.333%;
+
+    display: flex;
+    justify-content: center;       /* 内容水平居中  给content加会出现内容在content这个块居中，整体上未必居中*/
+    align-items: center;           /* 内容垂直居中 */
+    text-align: center;
+
+}
+
+.content{
+    position: relative;           
+    z-index: 2; /* 提升层级到遮罩上面  z-index必须有position才能用*/
+}
+
+
+.content h1{
+    font-size: 48px ;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    margin-bottom: 20px;
+}
+
+.content p{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 30px;
+
+}
+
+.btn{
+    display: inline-block;  /*用行内块不会占用一整行*/
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding: 10px 30px;
+    background-color: rgba(223, 85, 136, 0.8);
+    border-radius: 23px;
+    transition: background-color 0.3s, transform 0.2s;
+
+}
+
+.btn:hover{
+    background-color: rgba(207, 74, 123, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(231, 92, 224, 0.4);
+}
+
+
+#slide-1:checked~.all-slides{
+    transform: translateX(0%);
+    /* 加上transform后会出现盖住导航栏的情况，因为transform会创建新的图层 */
+}
+
+#slide-2:checked~.all-slides{
+    transform: translateX(-33.333%);
+}
+
+#slide-3:checked~.all-slides{
+    transform: translateX(-66.6667%);
+}
+
+/* 黑色视窗蒙版 */
+.overlay{
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* 比原本稍微调暗一点 */
+    z-index: 1;
+}
+
+.slide1{
+    background: url(./image/1.png) no-repeat center/cover;
+}
+
+.slide2{
+    background: url(./image/2.jpg) no-repeat center/cover;
+}
+
+.slide3{
+    background: url(./image/3.jpg) no-repeat center/cover;
+}
+
+.dots{
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+
+}
+
+.dot{
+    width: 15px;
+    height: 15px;
+    background-color:rgba(255, 255, 255, 0.8);;
+    border-radius: 50%;
+    transition: all .3s;
+}
+
+.dot:hover{
+    background-color: white;
+}
+
+#slide-1:checked ~ .dots .dot1,
+#slide-2:checked ~ .dots .dot2,
+#slide-3:checked ~ .dots .dot3{
+    background-color: rgba(223, 85, 136, 0.8); /* 变成紫色 */
+    width: 30px;                   /* 激活时变长一点*/
+    border-radius: 10px;          
+}
+
+.like{
+    width: 100vw;
+    background-color: rgba(223, 85, 136, 0.8);
+    padding: 20px;
+}
+
+.like h2{
+    color: rgb(89, 162, 222);
+    padding: 22px;
+    font-size: 38px;
+    text-indent: 68px;
+}
+
+.like .w{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+    grid-template-rows: 350px 350px;/* 明确设置两行，每行350px  用于实现合并效果*/
+}
+
+.card{
+    position: relative;
+    /* height: 350px;  给img设置高度会自适应，给card设置还要改img高度100% */
+    height: 100%;/*想实现合并这里card不要给具体值，而是占满grid单元格，具体值在单元格给*/
+    border: 1px solid rgb(107, 177, 234);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.card1{
+    grid-row:1 / 3; 
+}
+
+
+.card img{
+    display: block;  /*使图片下部与块盒子对齐*/
+    position: relative;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s;
+
+}
+
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    /* 缩放 */
+}
+
+.card .card-content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 40%;/*这里的相对于父代而言*/
+    background: rgba(107, 177, 234, 0.75); /* 加上半透明的背景，防止文字和图片颜色融为一体看不清 */
+    padding: 10px;
+
+
+    /* 先下移隐藏 注意是100%以card-content为基准*/
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out; /* 设定 0.4秒 的平滑滑动动画 */
+}
+
+/* card1 的 content height 为 20% */
+.card1 .card-content{
+    height: 20%;
+}
+
+
+.card:hover .card-content{
+    /* 注意是0，回到原位而非上移 */
+    transform: translateY(0);
+}
+
+.card-content h1{
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgba(207, 74, 123, 1);
+
+}
+
+.card-content p{
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgba(207, 74, 123, 1);
+}
+
+/* footer区域 */
+footer {
+    z-index: 999;
+    height: 50px;
+    background-color: black;
+}
+
+footer p{
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+
+ 
+
+/* 1. 适配平板 */
+@media (max-width: 1200px) {
+    .w {
+        width: 100%; /* 改为占满屏幕宽度 */
+        padding: 0 15px; 
+    }
+}
+
+/* 2. 适配手机屏幕 (当屏幕小于 768px 时) */
+@media (max-width: 768px) {
+    
+
+    .header {
+        height: auto; /* 取消 100px 的死高度，让内容自由撑开 */
+        padding: 10px 0;
+    }
+
+    .header .w {
+        flex-direction: column; /* 让 Logo 和导航栏上下竖着排 */
+        height: auto;
+        padding: 0; 
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header .logo {
+        height: 30px; /* 手机上 Logo 矮一点 */
+        width: 60px;
+    }
+
+    .header .nav ul {
+        flex-wrap: wrap; /* 如果导航菜单太多，允许换行 */
+        justify-content: center; /* 导航居中 */
+        height: auto;
+        gap: 15px;
+    }
+
+    .header .search {
+        display: none; /* 手机端隐藏搜索框 */
+    }
+  
+    .carousel{
+        height: 400px;
+    }
+    /* 轮播图手机端减小是很常见的操作 */
+
+    .content h1 {
+        font-size: 28px; /* 手机上大标题缩小 */
+    }
+    .content p {
+        font-size: 16px; /* 副标题缩小 */
+        padding: 0 20px;
+    }
+
+  
+    .like {
+        width: 100%; 
+    }
+
+    .like h2 {
+        text-indent: 0; 
+        text-align: center; /* 标题居中*/
+        font-size: 28px;
+        padding: 15px;
+    }
+
+    .like .w {
+        grid-template-columns: 1fr; /* 变成单列，卡片上下排 */
+        grid-template-rows: auto; 
+        gap: 20px;
+    }
+
+    .card {
+        height: 250px; /* 手机上给卡片一个固定高度 */
+    }
+
+    .card img{
+        object-fit: cover;
+        object-position:50% 20%;
+        /* 调一下图片显示位置 */
+    }
+
+    .card1 {
+        grid-row: auto; /* 取消第一张卡的合并*/
+    }
+
+    .card .card-content {
+        height: 50%; /* 文字框比例上移，原先的比例会遮住一部分 */
+    }
+}
+
+/* 关于媒体查询修改过多的问题 */
+/* ❌ 错误做法（混凝土）：在手机上会撑爆屏幕
+.w { width: 1200px; } 
+
+/* ✅ 正确做法（橡胶）：电脑上最宽1200，手机上自动缩放沾满全屏 */
+ /* .w { 
+    max-width: 1200px; 
+    width: 100%; 
+    padding: 0 15px; /* 两边留点缝隙 */
+
+/* 第一，多使用max-width加width百分比的组合 */
+/* 第二，除非必要不要写死height */
+/* 第三，用grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));而不是repeat（3，1fr）这种
+规定了几列，让grid自己计算 相应的flex可以加上flex-wrap: wrap;（需要合并的话就只能用后者定死列数 auto-fit只适合所有卡片大小一致）*/
+
+/* 关于字体大小正文用rem，标题用clamp(最小字号, 理想字号, 最大字号) 不要用vw，vw根据视口宽度定在电脑很大手机端很小 */
+/* font-size: clamp(16px, 2vw + 1rem, 24px); */
+/* 这句话的意思是：“浏览器，我的字号最好是 2vw + 1rem（跟着屏幕缩放），但是不管屏幕多小，字不能小于 16px（保证能看清），不管屏幕多大，字不能超过 24px（保证不突兀）。 */
+/* 可以用vmin和vmax，以当前视口宽高的最小/最大区分  */
+/* vw / vh 适合用于单方向的排版（比如宽度占一半）。
+vmin 适合用于“无论如何都要完整显示在屏幕内”的核心元素（比如弹窗、正方形卡片、横竖屏通用的弹性字体）。
+vmax 适合用于“无论如何都要覆盖整个屏幕”的背景元素（防止漏底） */

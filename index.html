@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七七动漫</title>
+    <!-- 引入网页图标 -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 快捷导航   感觉不太好看注释掉了-->
+    <!-- <div class="shortcut ">
+        <div class="w">
+            <ul>
+            <li><a href="#">请先登录</a></li>
+            <li><div class="line"></div></li>
+            <li><a href="#">用户中心</a></li>
+            <li><div class="line"></div></li>
+            <li><a href="#">帮助中心</a></li>
+            <li><div class="line"></div></li>
+            <li><a href="#">动漫推荐</a></li>
+            <li><div class="line"></div></li>
+            <li><a href="#">在线客服</a></li>
+            </ul>
+        </div>
+    </div> -->
+
+    <!-- header区域 -->
+    <div class="header">
+        <div class="w">
+
+            <div class="logo">
+                <h1>
+                    <a href="#" title="七七动漫">七七动漫首页</a>
+                </h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="">首页</a></li>
+                    <li><a href="">新番放送</a></li>
+                    <li><a href="">猜你想看</a></li>
+                    <li><a href="">我的收藏</a></li>
+                    <li><a href="">动漫社区</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="搜你想看">
+            </div>
+          </div>
+    </div>
+
+    <!-- 轮播图区域 -->
+     <div class="carousel">
+
+        <!-- 用单选框控制 -->
+        <input type="radio" name="slider" id="slide-1" checked>
+        <input type="radio" name="slider" id="slide-2">
+        <input type="radio" name="slider" id="slide-3">
+
+        <div class="all-slides">
+            <div class="slide1">
+                <div class="overlay"></div>
+
+                <div class="content">
+                    <h1>欢迎来到动漫的世界！</h1>
+                    <p>最新、最热的番剧都在这里，立刻开始你的追番之旅！</p>
+                    <a href="" class="btn">立即观看</a>
+                </div>
+
+            </div>
+
+            <div class="slide2">
+                <div class="overlay"></div>
+
+                <div class="content">
+                    <h1>经典专区</h1>
+                    <p>回顾那些年我们追过的经典动漫，重温美好回忆！</p>
+                    <a href="" class="btn">经典回顾</a>
+                </div>
+
+            </div>
+
+            <div class="slide3">
+                <div class="overlay"></div>
+
+                <div class="content">
+                    <h1>社区中心</h1>
+                    <p>加入我们的动漫社区，与同好交流分享，一起探讨动漫的魅力！</p>
+                    <a href="" class="btn">加入社区</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 隐藏单选框，用链接后的小圆点作为装饰 -->
+        <div class="dots">
+            <label for="slide-1" class="dot dot1"></label>
+            <label for="slide-2" class="dot dot2"></label>
+            <label for="slide-3" class="dot dot3"></label>
+        </div>
+
+     </div>
+
+
+     <!-- 专栏区域 -->
+      <div class="like">
+        <h2>最近热播</h2>
+        <div class="w">
+            <div class="card card1">
+                <img src="./image/card1.jpeg" alt="" >
+                <div class="card-content">
+                    <h1>紫罗兰永恒花园</h1>
+                    <p>薇尔莉特，从战场走向书信，代笔中领悟爱的真谛。京都动画的极致唯美，治愈系永恒名作。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./image/card2.jpg" alt="">
+                <div class="card-content">
+                    <h1>进击的巨人</h1>
+                    <p>艾伦，为自由而战，揭开巨人之谜。史诗级剧情，震撼的世界观，不容错过的经典。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./image/card3.jpg" alt="">
+                <div class="card-content">
+                    <h1>间谍过家家</h1>
+                    <p>间谍父亲，杀手母亲，超能力女儿，伪装家庭的爆笑日常。轻松幽默，温情治愈。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./image/card4.jpg" alt="">
+                <div class="card-content">
+                    <h1>Bang Dream!</h1>
+                    <p>少女们的音乐梦想，热血青春的乐队故事。音乐与友情的完美结合，充满活力与感动。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./image/card5.webp" alt="">
+                <div class="card-content">
+                    <h1>约会大作战</h1>
+                    <p>五河士道，与精灵少女们的约会大冒险。奇幻设定，浪漫喜剧，人气超高的后宫番。</p>
+                </div>
+            </div>
+        
+      </div>
+      </div>
+
+    <!-- foot区域 -->
+    <footer>
+        <p>欢迎观看最新动漫！</p>
+    </footer>
+
+</body>
+</html>
